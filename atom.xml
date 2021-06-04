@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>A-Lamb&#39;s blogs</title>
+  
+  
+  <link href="https://a-lamb.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://a-lamb.github.io/"/>
+  <updated>2021-05-18T08:25:12.763Z</updated>
+  <id>https://a-lamb.github.io/</id>
+  
+  <author>
+    <name>A little lamb</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>A Lamb&#39;s First Blog</title>
+    <link href="https://a-lamb.github.io/2021/05/17/A%20Lamb&#39;s%20First%20Blog/"/>
+    <id>https://a-lamb.github.io/2021/05/17/A%20Lamb&#39;s%20First%20Blog/</id>
+    <published>2021-05-17T06:18:36.000Z</published>
+    <updated>2021-05-18T08:25:12.763Z</updated>
+    
+    <content type="html"><![CDATA[<center><font face="仿宋" color="HotPink" size="5"> **有一天，小羊不想在笔记本上做笔记了**<center><font face="仿宋" color="HotPink" size="5"> **但，它不喜欢那些千篇一律的BLOG APP**<center><font face="仿宋" color="HotPink" size="5"> **于是，小羊拥有了一个可以自定义一切的个人主页**]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;center&gt;&lt;font face=&quot;仿宋&quot; color=&quot;HotPink&quot; size=&quot;5&quot;&gt; **有一天，小羊不想在笔记本上做笔记了**
+
+&lt;center&gt;&lt;font face=&quot;仿宋&quot; color=&quot;HotPink&quot; size=&quot;5&quot;&gt; **但，它不喜欢那些千篇一律的BL</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
