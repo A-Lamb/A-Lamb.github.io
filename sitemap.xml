@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://a-lamb.github.io/2021/06/07/sentinel-download/</loc>
+    
+    <lastmod>2021-06-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://a-lamb.github.io/2021/05/17/A%20Lamb's%20First%20Blog/</loc>
     
     <lastmod>2021-05-18</lastmod>
@@ -16,6 +23,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://a-lamb.github.io/tags/%E9%81%A5%E6%84%9F/</loc>
+    <lastmod>2021-06-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 
   
