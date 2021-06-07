@@ -6,7 +6,7 @@
   <link href="https://a-lamb.github.io/atom.xml" rel="self"/>
   
   <link href="https://a-lamb.github.io/"/>
-  <updated>2021-06-07T08:16:46.846Z</updated>
+  <updated>2021-06-07T08:23:08.621Z</updated>
   <id>https://a-lamb.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://a-lamb.github.io/2021/06/07/sentinel-download/"/>
     <id>https://a-lamb.github.io/2021/06/07/sentinel-download/</id>
     <published>2021-06-07T05:50:11.000Z</published>
-    <updated>2021-06-07T08:16:46.846Z</updated>
+    <updated>2021-06-07T08:23:08.621Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Sentinel-数据下载"><a href="#Sentinel-数据下载" class="headerlink" title="Sentinel 数据下载"></a>Sentinel 数据下载</h1><p align ="left"> <font face="黑体" color="black" size="5"><p>一、哨兵科学数据中心（Sentinels Scientific Data Hub）</p><blockquote><p>网址：<a href="https://scihub.copernicus.eu/dhus/#/home">https://scihub.copernicus.eu/dhus/#/home</a></p></blockquote><p align ="left"> <font face="黑体" color="black" size="5"><p>需注册欧空局账号</p><p>可下载sentinel1/2/3影像，数据更新快</p><p>缺点：需VPN，下载速度慢，网站不稳定（尽可能在凌晨-上午10点下载）</p><p><a href="https://imgtu.com/i/2wstWq"><img src="https://z3.ax1x.com/2021/06/07/2wstWq.png" alt="2wstWq.png"></a></p><p align ="left"> <font face="黑体" color="black" size="5"><p>二、美国地质勘探局（United States Geological Survey, USGS）</p><blockquote><p>网址：<a href="https://earthexplorer.usgs.gov/">https://earthexplorer.usgs.gov/</a></p></blockquote><p align ="left"> <font face="黑体" color="black" size="5"><p>需注册账号</p><p>只可下载sentinel-2数据</p><p>缺点：需VPN，网站加载慢，下载速度慢</p><p><a href="https://imgtu.com/i/2wsDw4"><img src="https://z3.ax1x.com/2021/06/07/2wsDw4.png" alt="2wsDw4.png"></a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Sentinel-数据下载"><a href="#Sentinel-数据下载" class="headerlink" title="Sentinel 数据下载"></a>Sentinel 数据下载</h1><p align ="left"> <font face="黑体" size="5"><p>一、哨兵科学数据中心（Sentinels Scientific Data Hub）</p><blockquote><p>网址：<a href="https://scihub.copernicus.eu/dhus/#/home">https://scihub.copernicus.eu/dhus/#/home</a></p></blockquote><p align ="left"> <font face="黑体" size="5"><p>需注册欧空局账号</p><p>可下载sentinel1/2/3影像，数据更新快</p><p>缺点：需VPN，下载速度慢，网站不稳定（尽可能在凌晨-上午10点下载）</p><p><a href="https://imgtu.com/i/2wstWq"><img src="https://z3.ax1x.com/2021/06/07/2wstWq.png" alt="2wstWq.png"></a></p><p align ="left"> <font face="黑体" size="5"><p>二、美国地质勘探局（United States Geological Survey, USGS）</p><blockquote><p>网址：<a href="https://earthexplorer.usgs.gov/">https://earthexplorer.usgs.gov/</a></p></blockquote><p align ="left"> <font face="黑体" size="5"><p>需注册账号</p><p>只可下载sentinel-2数据</p><p>缺点：需VPN，网站加载慢，下载速度慢</p><p><a href="https://imgtu.com/i/2wsDw4"><img src="https://z3.ax1x.com/2021/06/07/2wsDw4.png" alt="2wsDw4.png"></a></p>]]></content>
     
     
       
