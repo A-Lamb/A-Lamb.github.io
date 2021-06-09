@@ -6,7 +6,7 @@
   <link href="https://a-lamb.github.io/atom.xml" rel="self"/>
   
   <link href="https://a-lamb.github.io/"/>
-  <updated>2021-06-08T06:17:12.584Z</updated>
+  <updated>2021-06-09T03:33:28.227Z</updated>
   <id>https://a-lamb.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ENVI中Sentinel-1A影像的裁剪与后向散射系数提取</title>
+    <link href="https://a-lamb.github.io/2021/06/08/ENVI/"/>
+    <id>https://a-lamb.github.io/2021/06/08/ENVI/</id>
+    <published>2021-06-08T06:19:03.000Z</published>
+    <updated>2021-06-09T03:33:28.227Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Sentinel-1A-数据裁剪"><a href="#Sentinel-1A-数据裁剪" class="headerlink" title="Sentinel-1A 数据裁剪"></a>Sentinel-1A 数据裁剪</h1><p align ="left"> <font face="宋体" size="4"><ol><li>将SNAP预处理后的S1影像另存为ENVI可以打开的格式（如ENVI格式）</li><li>在ENVI中打开S1影像和裁剪区域的shp文件</li><li>Toolbox——Regions of Interest——Subset Data from ROIs——选择待裁剪影像和感兴趣区shp文件（Mask pixels outside of ROIs?改为YES)<br>裁剪后的图像默认为黑色背景，若要改为白色背景，步骤：<ul><li>Toolbox——Raster Management—— Edit ENVI Header</li><li>点击左上角add——Data ignore value——设置为0</li></ul></li></ol><h1 id="Sentinel-1A-后向散射系数提取"><a href="#Sentinel-1A-后向散射系数提取" class="headerlink" title="Sentinel-1A 后向散射系数提取"></a>Sentinel-1A 后向散射系数提取</h1><p align ="left"> <font face="宋体" size="4"><ol><li>点击 Cursor value(左上角红色图表)，可看到鼠标所在位置的dB值（一般均为负值）</li><li>右键图层——Quick Stats, 可得到dB值的统计学信息</li><li>File——save as——ASCII——选择文件——Output Style选 XYZ Format，其他参数默认，得到每个像元对应的经度、纬度和dB值（txt.格式）</li></ol><p align ="left"> <font face="黑体" color="HotPink" size="4">注意：<p align ="left"> <font face="宋体" color="HotPink" size="4">将每个像元对应的经纬度和dB值输出为ASCII时，txt文件过大,无法用记事本/word/excel打开解决方法：百度下载LogViewer Pro，可读取任意大小的txt.文件]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Sentinel-1A-数据裁剪&quot;&gt;&lt;a href=&quot;#Sentinel-1A-数据裁剪&quot; class=&quot;headerlink&quot; title=&quot;Sentinel-1A 数据裁剪&quot;&gt;&lt;/a&gt;Sentinel-1A 数据裁剪&lt;/h1&gt;&lt;p align =&quot;left&quot;&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="遥感" scheme="https://a-lamb.github.io/tags/%E9%81%A5%E6%84%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>利用SNAP实现Sentinel-1A数据的预处理</title>
