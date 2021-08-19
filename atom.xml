@@ -6,7 +6,7 @@
   <link href="https://a-lamb.github.io/atom.xml" rel="self"/>
   
   <link href="https://a-lamb.github.io/"/>
-  <updated>2021-06-16T02:42:33.653Z</updated>
+  <updated>2021-08-19T09:10:36.339Z</updated>
   <id>https://a-lamb.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SNAP 创建流程图</title>
+    <link href="https://a-lamb.github.io/2021/07/13/SNAP-%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
+    <id>https://a-lamb.github.io/2021/07/13/SNAP-%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9B%BE/</id>
+    <published>2021-07-13T12:39:26.000Z</published>
+    <updated>2021-08-19T09:10:36.339Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="利用SNAP创建Sentinel-1A数据预处理流程图"><a href="#利用SNAP创建Sentinel-1A数据预处理流程图" class="headerlink" title="利用SNAP创建Sentinel-1A数据预处理流程图"></a>利用SNAP创建Sentinel-1A数据预处理流程图</h1><p align ="left"> <font face="微软雅黑" size="4"> <p>S1数据的分步预处理需要进行多次数据的写入和写出，往往耗费数小时，而以流程图的方式可以快速（10分钟）完成预处理过程。<br>步骤：</p><ol><li>导入S1影像（压缩包直接拖拽到SNAP）</li><li>Tools——Graph Builder</li><li>鼠标右击添加操作（添加所有操作后记得点击左上角，下次可以直接读取流程图）</li><li>下方设置各操作参数</li><li>Run<br><a href="https://imgtu.com/i/fbfrjK"><img src="https://z3.ax1x.com/2021/08/19/fbfrjK.png" alt="fbfrjK.png"></a></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;利用SNAP创建Sentinel-1A数据预处理流程图&quot;&gt;&lt;a href=&quot;#利用SNAP创建Sentinel-1A数据预处理流程图&quot; class=&quot;headerlink&quot; title=&quot;利用SNAP创建Sentinel-1A数据预处理流程图&quot;&gt;&lt;/a&gt;利用SNA</summary>
+      
+    
+    
+    
+    
+    <category term="遥感" scheme="https://a-lamb.github.io/tags/%E9%81%A5%E6%84%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>利用SNAP实现Sentinel-2A L1C数据的大气校正</title>
