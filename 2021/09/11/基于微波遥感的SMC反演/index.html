@@ -1,0 +1,487 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>基于微波遥感的土壤含水量（SMC）反演 | A-Lamb's notebook</title><meta name="keywords" content="遥感"><meta name="author" content="A little lamb"><meta name="copyright" content="A little lamb"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、 微波遥感分类 主动微波遥感：即雷达，向地面发送微波辐射，并从地球表面捕获后向散射信号(σ0)； 被动微波遥感：即辐射计，以亮度温度(TB)的形式测量地球表面自然发射的能量。  二、微波遥感数据源全球8项被动微波遥感任务   微波传感器 卫星名称 任务名称 发射时间 服役结束时间    SMMR-扫描多通道微波辐射计 Nimbus-7 - 1978 1987   SSM&#x2F;I-微波成像仪  国防">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于微波遥感的土壤含水量（SMC）反演">
+<meta property="og:url" content="https://a-lamb.github.io/2021/09/11/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E6%B3%A2%E9%81%A5%E6%84%9F%E7%9A%84SMC%E5%8F%8D%E6%BC%94/index.html">
+<meta property="og:site_name" content="A-Lamb&#39;s notebook">
+<meta property="og:description" content="一、 微波遥感分类 主动微波遥感：即雷达，向地面发送微波辐射，并从地球表面捕获后向散射信号(σ0)； 被动微波遥感：即辐射计，以亮度温度(TB)的形式测量地球表面自然发射的能量。  二、微波遥感数据源全球8项被动微波遥感任务   微波传感器 卫星名称 任务名称 发射时间 服役结束时间    SMMR-扫描多通道微波辐射计 Nimbus-7 - 1978 1987   SSM&#x2F;I-微波成像仪  国防">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://a-lamb.github.io/img/lamb2.jpg">
+<meta property="article:published_time" content="2021-09-11T12:39:26.000Z">
+<meta property="article:modified_time" content="2021-09-11T11:16:30.945Z">
+<meta property="article:author" content="A little lamb">
+<meta property="article:tag" content="遥感">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://a-lamb.github.io/img/lamb2.jpg"><link rel="shortcut icon" href="/img/small_lamb.jpg"><link rel="canonical" href="https://a-lamb.github.io/2021/09/11/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E6%B3%A2%E9%81%A5%E6%84%9F%E7%9A%84SMC%E5%8F%8D%E6%BC%94/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于微波遥感的土壤含水量（SMC）反演',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-11 19:16:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="A-Lamb's notebook" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/small_lamb.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/lamb2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">A-Lamb's notebook</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基于微波遥感的土壤含水量（SMC）反演</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-09-11T12:39:26.000Z" title="Created 2021-09-11 20:39:26">2021-09-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-09-11T11:16:30.945Z" title="Updated 2021-09-11 19:16:30">2021-09-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于微波遥感的土壤含水量（SMC）反演"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、-微波遥感分类"><a href="#一、-微波遥感分类" class="headerlink" title="一、 微波遥感分类"></a>一、 微波遥感分类</h2><ol>
+<li>主动微波遥感：即雷达，向地面发送微波辐射，并从地球表面捕获后向散射信号(σ0)；</li>
+<li>被动微波遥感：即辐射计，以亮度温度(TB)的形式测量地球表面自然发射的能量。</li>
+</ol>
+<h2 id="二、微波遥感数据源"><a href="#二、微波遥感数据源" class="headerlink" title="二、微波遥感数据源"></a>二、微波遥感数据源</h2><h3 id="全球8项被动微波遥感任务"><a href="#全球8项被动微波遥感任务" class="headerlink" title="全球8项被动微波遥感任务"></a>全球8项被动微波遥感任务</h3><table>
+<thead>
+<tr>
+<th>微波传感器</th>
+<th>卫星名称</th>
+<th>任务名称</th>
+<th>发射时间</th>
+<th>服役结束时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SMMR-扫描多通道微波辐射计</td>
+<td>Nimbus-7</td>
+<td>-</td>
+<td>1978</td>
+<td>1987</td>
+</tr>
+<tr>
+<td>SSM/I-微波成像仪</td>
+<td></td>
+<td>国防气象卫星计划-DMSP</td>
+<td>1987</td>
+<td>2007</td>
+</tr>
+<tr>
+<td>微波成像仪</td>
+<td></td>
+<td>热带降雨测量任务-TRMM</td>
+<td>1997</td>
+<td>2015</td>
+</tr>
+<tr>
+<td>WindSAT</td>
+<td>Coriolis</td>
+<td>WindSAT任务</td>
+<td>2003</td>
+<td>2012</td>
+</tr>
+<tr>
+<td>AMSR-E</td>
+<td>Aqua</td>
+<td></td>
+<td>2002</td>
+<td>2011</td>
+</tr>
+<tr>
+<td>AMSR2</td>
+<td>GCOM-W</td>
+<td></td>
+<td>2012</td>
+<td>至今</td>
+</tr>
+<tr>
+<td>SMOS</td>
+<td></td>
+<td>土壤湿度与海水盐度任务</td>
+<td>2009</td>
+<td>2017</td>
+</tr>
+<tr>
+<td>SMAP</td>
+<td></td>
+<td>土壤水分主被动探测任务</td>
+<td>2015</td>
+<td>至今</td>
+</tr>
+</tbody></table>
+<h3 id="全球2项主动微波遥感任务"><a href="#全球2项主动微波遥感任务" class="headerlink" title="全球2项主动微波遥感任务"></a>全球2项主动微波遥感任务</h3><table>
+<thead>
+<tr>
+<th>微波传感器</th>
+<th>卫星名称</th>
+<th>任务名称</th>
+<th>发射时间</th>
+<th>服役结束时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SCAT</td>
+<td>ERS-1/2</td>
+<td>欧洲遥感</td>
+<td>1991</td>
+<td>2011</td>
+</tr>
+<tr>
+<td>ASCAT</td>
+<td>MetOp-A/B</td>
+<td>气象运行卫星计划</td>
+<td>2007</td>
+<td>2014</td>
+</tr>
+</tbody></table>
+<h2 id="三、微波土壤含水量反演原理"><a href="#三、微波土壤含水量反演原理" class="headerlink" title="三、微波土壤含水量反演原理"></a>三、微波土壤含水量反演原理</h2><h3 id="1-被动微波（辐射计）反演土壤含水量"><a href="#1-被动微波（辐射计）反演土壤含水量" class="headerlink" title="(1) 被动微波（辐射计）反演土壤含水量"></a>(1) 被动微波（辐射计）反演土壤含水量</h3><p> <strong>原理</strong><br>微波辐射计可探测到土壤表面的热辐射(以亮温TB的形式)，热辐射与土壤物理温度(TS)成正比，比例常数称为土壤微波发射率(ε) ，ε受到土壤水分变化的强烈影响。<br>根据基尔霍夫定律，发射率ε与表面反射率(R)互补，ε = 1−R。<br>随着土壤含水量的增加，土壤电导率降低，导致发射率降低，亮温降低。<br>所有被动微波反演算法都基于零阶辐射传输方程。</p>
+<p> <strong>步骤</strong></p>
+<ol>
+<li>正演</li>
+</ol>
+<ul>
+<li>SMC——混合介质模型（建立SMC与土壤介电常数K的联系）——辐射传输模型（建立土壤介电常数K与亮温TB的联系）</li>
+<li>即：SMC——K——TB(模拟)</li>
+<li>通过最小化TB（模拟）与TB（卫星影像）之间的误差，对模型进行校正。</li>
+</ul>
+<ol start="2">
+<li>反演</li>
+</ol>
+<ul>
+<li>TB（卫星影像）——辐射传输模型和混合介质模型的倒置——SMC</li>
+</ul>
+<p> <strong>TB的5个重要影响因素</strong></p>
+<ul>
+<li>温度；表面粗糙度；植被；大气；宇宙本底</li>
+</ul>
+<p><strong>常见模型</strong></p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>类别</th>
+<th>来源</th>
+<th>参数</th>
+<th>模型描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>τ−ω</td>
+<td>辐射传输模型</td>
+<td>Mo et al.1982</td>
+<td>2个。植被光学深度，单次散射反照率</td>
+<td>0阶辐射传输模型，忽略了多重散射效应</td>
+</tr>
+<tr>
+<td>Topp</td>
+<td>混合介质模型</td>
+<td>Topp et al.1980</td>
+<td>1个。土壤含水量</td>
+<td></td>
+</tr>
+<tr>
+<td>Dobson</td>
+<td>混合介质模型</td>
+<td>Dobson et al.1985</td>
+<td>8个。微波频率、土壤含水量、土壤温度、粉粒百分比、砂粒百分比、容重、固体颗粒密度、盐度</td>
+<td></td>
+</tr>
+<tr>
+<td>Hallikanen</td>
+<td>混合介质模型</td>
+<td>Hallikanen et al.1985</td>
+<td>3个。土壤含水量、粉粒百分比、砂粒百分比</td>
+<td></td>
+</tr>
+<tr>
+<td>注：①植被光学深度：植被层不透明性的量度。即介质吸收辐射的能力的量度，等于入射辐射强度与出射辐射强度之比。</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>②单次散射反照率：散射效率与植被层内消光效率的比值。</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2-主动微波（雷达-反演土壤含水量"><a href="#2-主动微波（雷达-反演土壤含水量" class="headerlink" title="(2) 主动微波（雷达)反演土壤含水量"></a>(2) 主动微波（雷达)反演土壤含水量</h3><p><strong>主动微波传感器分类</strong></p>
+<ul>
+<li>成像型：雷达。主要雷达卫星包括RADARSAT、ENVISAT、TerraSAR-X、Sentinel-1和SMAP任务中的主动传感器。</li>
+<li>非成像型：散射计和高度计。散射计用于风速和土壤湿度的观测，散射计卫星包括NASA散射计(NSCCAT)， QuikSCAT, ERS散射计，MetOp A/B ASCAT；高度计用于高度测量，高度计卫星包括TOPEX/Poseidon、Jason-1/2和Cryosat-2。</li>
+</ul>
+<p> <strong>原理</strong></p>
+<ul>
+<li>与被动微波遥感类似，通过建立后向散射系数与土壤介电常数之间的关系，以及土壤介电常数与含水量之间的关系实现对土壤含水量的反演</li>
+<li>即σ——k——SMC</li>
+</ul>
+<p><strong>可用于反演SMC的频段</strong></p>
+<ol>
+<li>L-，0.5-1.5 GHz</li>
+<li>C-，4-8 GHz</li>
+<li>X-，8-12 GHz</li>
+</ol>
+<p><strong>常见模型</strong></p>
+<p>基于主动微波遥感的土壤含水量反演模型可分为四类：</p>
+<ol>
+<li>物理模型 </li>
+<li>半经验模型</li>
+<li>经验模型</li>
+<li>变化检测模型</li>
+</ol>
+<ul>
+<li>（1）<strong>物理模型</strong><br>模拟不同土壤介电常数、表面粗糙度和传感器特性下的后向散射系数。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>简称</th>
+<th>类别</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基尔霍夫近似-Kirchhoff Approximation</td>
+<td>KA</td>
+<td>物理模型</td>
+<td>Stogryn 1967; Ulaby et al.,1982</td>
+<td>包括几何光学模型(GOM) 和物理光学模型(POM)</td>
+</tr>
+<tr>
+<td>小扰动模型-Small Perturbation Model</td>
+<td>SPM</td>
+<td>物理模型</td>
+<td>Rice 1951</td>
+<td></td>
+</tr>
+<tr>
+<td>小斜率近似模型-Small Slope Approximation Model</td>
+<td>SSA</td>
+<td>物理模型</td>
+<td>Voronovich 1985</td>
+<td></td>
+</tr>
+<tr>
+<td>密歇根微波冠层散射模型-Michigan Microwave Canopy Scattering Model</td>
+<td>MIMICS</td>
+<td>物理模型</td>
+<td>Ulaby et al.,1990</td>
+<td></td>
+</tr>
+<tr>
+<td>积分方程模型-Integral Equation Model</td>
+<td>IEM</td>
+<td>物理模型</td>
+<td>Fung et al., 1992</td>
+<td>目前常用的主流物理模型，仅适用于裸土</td>
+</tr>
+<tr>
+<td>改进的积分方程模型-Advanced Integral Equation Model</td>
+<td>AIEM</td>
+<td>物理模型</td>
+<td>Wu et al. 2001 ; Chen et al. 2003</td>
+<td>目前常用的主流物理模型，仅适用于裸土</td>
+</tr>
+</tbody></table>
+<ul>
+<li>（2）<strong>半经验模型</strong><br>所需参数相比于物理模型大幅度减少。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>简称</th>
+<th>类别</th>
+<th>来源</th>
+<th>参数</th>
+<th>适用条件</th>
+<th>描述                                      描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Oh模型</td>
+<td>Oh</td>
+<td>半经验模型</td>
+<td>Oh et al. 1992</td>
+<td>归一化粗糙度ks，菲涅尔表面反射率</td>
+<td>0.1&lt; ks &lt;6.0;2.6&lt; kl(归一化相关长度）&lt;19.7；0.09&lt; mv&lt;0.31;10&lt;θ（入射角）&lt;70</td>
+<td>仅需均方根高度即可反演土壤水分；在多极化数据下，可同时估计土壤水分和表面粗糙度，而不需要实地测量。</td>
+</tr>
+<tr>
+<td>Dubois模型</td>
+<td>Dubois</td>
+<td>半经验模型</td>
+<td>Dubois et al. 1995</td>
+<td>入射角θ，土壤介电常数，波数k，均方根高度s</td>
+<td>L,C,X波段；0.3&lt; s&lt; 3;30&lt;θ&lt;65</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>（3）<strong>经验模型</strong><br>在裸露土壤条件下，假设粗糙度和植被条件不变，后向散射系数与土壤水分具有线性相关的经验关系（少数研究也发现了非线性相关）；但是在某一地区构建的经验模型不适用于其他地区。</li>
+<li>（4）<strong>植被贡献模型</strong><br>适用于植被覆盖区的模型。<ol>
+<li><strong>水云模型</strong>-Water-Cloud Model-WCM，在植被覆盖区最常用的半经验模型，由Attema and Ulaby (1978)提出。模型中，同极化后向散射系数可表示为植被后向散射贡献+植被与土壤之间相互作用辐射的贡献+土壤表面的贡献。若忽略植被与土壤之间相互作用辐射的贡献，则为简化的水云模型。<br>模型所需参数：入射角；双向植被衰减δ；植被描述符V1，V2,（约等于植被含水量）；参数A,B,C,D（根据当地植被和土壤条件确定）</li>
+<li><strong>比率法</strong>-ratio method，半经验模型，由Joseph et al., (2008, 2010)提出。<br>模型所需参数：植被含水量，参数a,b（根据当地条件校正）</li>
+<li><strong>一种经验模型</strong>，由Zribi et al. (2003)提出。<br>模型所需参数：入射角，入射时间，参数A,B,D,E（根据当地条件校正）</li>
+</ol>
+</li>
+<li>（5）<strong>变化检测模型</strong><br>原理：传感器在某一地点发出的多时相通道数据可以用来获得该地点土壤水分的相对变化。<br>模型基于一种假设：研究区域的地表粗糙度和植被覆盖状况不随时间变化，或时间尺度远长于土壤水分变化的时间尺度，则可以认为不同时期后向散射系数的变化完全由土壤水分的变化所导致。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>类别</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>δ指数方法-δ index approach</td>
+<td>变化检测模型</td>
+<td>Thoma et al ., 2004, 2006</td>
+<td></td>
+</tr>
+<tr>
+<td>α近似法-α approximation method</td>
+<td>变化检测模型</td>
+<td>Balenzano et al ., 2011</td>
+<td></td>
+</tr>
+<tr>
+<td>扩展的α近似法-extensions of α approximation method</td>
+<td>变化检测模型</td>
+<td>He et al ., 2017;Ouellette et al.，2017</td>
+<td></td>
+</tr>
+<tr>
+<td>归一化雷达后向散射土壤湿度指数-NBMIbackscatter soil moisture index (NBMI)</td>
+<td>变化检测模型</td>
+<td>Shoshany et al., 2000</td>
+<td></td>
+</tr>
+<tr>
+<td>TU-Wien变化检测算法- TU-Wien change detection algorithm</td>
+<td>变化检测模型</td>
+<td>Wagner 1998,1999;Wagner and Scipal 2000</td>
+<td>算法应用于MetOp上的ASCAT散射计</td>
+</tr>
+</tbody></table>
+<h2 id="四、冷知识or热知识"><a href="#四、冷知识or热知识" class="headerlink" title="四、冷知识or热知识"></a>四、冷知识or热知识</h2><ul>
+<li>强降水会造成噪声，使反演可靠性降低；</li>
+<li>越湿润的土壤在雷达影像中越亮；</li>
+<li>微波仅对土壤表层含水量非常敏感，敏感深度通常是微波波长的十分之一到一半。波长越长，穿透深度越深（1-5厘米);</li>
+<li>未完待续</li>
+</ul>
+<blockquote>
+<p><strong>参考文献：</strong><br> Karthikeyan L, Pan M, Wanders N, et al. Four decades of microwave satellite soil moisture observations: Part 1. A review of retrieval algorithms[J]. Advances in Water Resources, 2017, 109: 106-120.</p>
+</blockquote>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%81%A5%E6%84%9F/">遥感</a></div><div class="post_share"><div class="social-share" data-image="/img/lamb2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/08/13/AIEM/"><img class="next-cover" src="/img/lamb2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">基于AIEM模型的土壤含水量反演（Matlab代码）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/small_lamb.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">A little lamb</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%BE%AE%E6%B3%A2%E9%81%A5%E6%84%9F%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">一、 微波遥感分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BE%AE%E6%B3%A2%E9%81%A5%E6%84%9F%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-number">2.</span> <span class="toc-text">二、微波遥感数据源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E7%90%838%E9%A1%B9%E8%A2%AB%E5%8A%A8%E5%BE%AE%E6%B3%A2%E9%81%A5%E6%84%9F%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.1.</span> <span class="toc-text">全球8项被动微波遥感任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E7%90%832%E9%A1%B9%E4%B8%BB%E5%8A%A8%E5%BE%AE%E6%B3%A2%E9%81%A5%E6%84%9F%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.2.</span> <span class="toc-text">全球2项主动微波遥感任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BE%AE%E6%B3%A2%E5%9C%9F%E5%A3%A4%E5%90%AB%E6%B0%B4%E9%87%8F%E5%8F%8D%E6%BC%94%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">三、微波土壤含水量反演原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A2%AB%E5%8A%A8%E5%BE%AE%E6%B3%A2%EF%BC%88%E8%BE%90%E5%B0%84%E8%AE%A1%EF%BC%89%E5%8F%8D%E6%BC%94%E5%9C%9F%E5%A3%A4%E5%90%AB%E6%B0%B4%E9%87%8F"><span class="toc-number">3.1.</span> <span class="toc-text">(1) 被动微波（辐射计）反演土壤含水量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E5%8A%A8%E5%BE%AE%E6%B3%A2%EF%BC%88%E9%9B%B7%E8%BE%BE-%E5%8F%8D%E6%BC%94%E5%9C%9F%E5%A3%A4%E5%90%AB%E6%B0%B4%E9%87%8F"><span class="toc-number">3.2.</span> <span class="toc-text">(2) 主动微波（雷达)反演土壤含水量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%86%B7%E7%9F%A5%E8%AF%86or%E7%83%AD%E7%9F%A5%E8%AF%86"><span class="toc-number">4.</span> <span class="toc-text">四、冷知识or热知识</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
