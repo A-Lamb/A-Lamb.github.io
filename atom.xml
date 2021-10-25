@@ -6,7 +6,7 @@
   <link href="https://a-lamb.github.io/atom.xml" rel="self"/>
   
   <link href="https://a-lamb.github.io/"/>
-  <updated>2021-09-11T11:16:30.945Z</updated>
+  <updated>2021-10-25T11:43:42.760Z</updated>
   <id>https://a-lamb.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sentinel-2 L2A数据重采样与裁剪</title>
+    <link href="https://a-lamb.github.io/2021/10/25/Sentinel-2-%E5%BD%B1%E5%83%8F%E9%87%8D%E9%87%87%E6%A0%B7%E4%B8%8E%E8%A3%81%E5%89%AA/"/>
+    <id>https://a-lamb.github.io/2021/10/25/Sentinel-2-%E5%BD%B1%E5%83%8F%E9%87%8D%E9%87%87%E6%A0%B7%E4%B8%8E%E8%A3%81%E5%89%AA/</id>
+    <published>2021-10-25T11:40:35.000Z</published>
+    <updated>2021-10-25T11:43:42.760Z</updated>
+    
+    <content type="html"><![CDATA[<p>以2021年9月9日华北平原某地Sentinel-2 L2A影像为例<br>(S2B_MSIL2A_20210909T030539_N0301_R075_T49SGU_20210909T061246.SAFE)<br><a href="https://imgtu.com/i/54o4AI"><img src="https://z3.ax1x.com/2021/10/25/54o4AI.png" alt="54o4AI.png"></a></p><h3 id="1-辐射校正和大气校正"><a href="#1-辐射校正和大气校正" class="headerlink" title="1. 辐射校正和大气校正"></a>1. 辐射校正和大气校正</h3><p>具体步骤见另一篇博客<em>：利用SNAP实现Sentinel-2A L1C数据的大气校正</em><br>这里采用的L2A影像无需进行辐射校正和大气校正。</p><h3 id="2-去云"><a href="#2-去云" class="headerlink" title="2. 去云"></a>2. 去云</h3><p>此处选用的是无云数据，这一步暂时省略。</p><h3 id="3-重采样"><a href="#3-重采样" class="headerlink" title="3. 重采样"></a>3. 重采样</h3><p>由于Sentinel-2不同波段存在三种不同分辨率，若不统一为同一分辨率的数据，许多后续操作都无法进行(例如裁剪、指数计算、分类等)。<br><strong>注意：需要确保重采样后数据的输出路径有足够的硬盘存储空间。</strong></p><h4 id="方法1：常规的栅格重采样工具"><a href="#方法1：常规的栅格重采样工具" class="headerlink" title="方法1：常规的栅格重采样工具"></a>方法1：常规的栅格重采样工具</h4><ul><li>Raster—Geometric Operations—Resampling</li><li>I/0 Parameters 默认</li><li>Resampling Parameters，如下：<br><a href="https://imgtu.com/i/54TZU1"><img src="https://z3.ax1x.com/2021/10/25/54TZU1.png" alt="54TZU1.png"></a></li></ul><h4 id="方法2：专门的Sentinel-2重采样工具"><a href="#方法2：专门的Sentinel-2重采样工具" class="headerlink" title="方法2：专门的Sentinel-2重采样工具"></a>方法2：专门的Sentinel-2重采样工具</h4><p>重采样的速度更快，本次约18min。</p><ul><li>Optical—Geometric—S2 Resampling Processor</li><li>I/0 Parameters 默认</li><li>Processing Parameters，如下：<br><a href="https://imgtu.com/i/54TJUI"><img src="https://z3.ax1x.com/2021/10/25/54TJUI.png" alt="54TJUI.png"></a></li></ul><h3 id="4-裁剪"><a href="#4-裁剪" class="headerlink" title="4. 裁剪"></a>4. 裁剪</h3><p>不规则的裁剪需要借助掩膜工具实现，通常用在最后出图时，在此之前尽可能做矩形裁剪。<br>矩形裁剪：Ratser—Subset<br>可根据经纬度或像素坐标范围选择裁剪区域</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;以2021年9月9日华北平原某地Sentinel-2 L2A影像为例&lt;br&gt;(S2B_MSIL2A_20210909T030539_N0301_R075_T49SGU_20210909T061246.SAFE)&lt;br&gt;&lt;a href=&quot;https://imgtu.com/i</summary>
+      
+    
+    
+    
+    
+    <category term="遥感" scheme="https://a-lamb.github.io/tags/%E9%81%A5%E6%84%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>基于微波遥感的土壤含水量（SMC）反演</title>
