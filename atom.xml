@@ -6,7 +6,7 @@
   <link href="https://a-lamb.github.io/atom.xml" rel="self"/>
   
   <link href="https://a-lamb.github.io/"/>
-  <updated>2021-10-25T11:43:42.760Z</updated>
+  <updated>2022-03-03T09:10:22.010Z</updated>
   <id>https://a-lamb.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Origin下载安装、问题及解决办法</title>
+    <link href="https://a-lamb.github.io/2022/03/03/Origin%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/"/>
+    <id>https://a-lamb.github.io/2022/03/03/Origin%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</id>
+    <published>2022-03-03T08:16:31.000Z</published>
+    <updated>2022-03-03T09:10:22.010Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Origin下载安装与问题"><a href="#Origin下载安装与问题" class="headerlink" title="Origin下载安装与问题"></a>Origin下载安装与问题</h1><h1 id="一、Origin-Pro-2022下载安装"><a href="#一、Origin-Pro-2022下载安装" class="headerlink" title="一、Origin Pro 2022下载安装"></a>一、Origin Pro 2022下载安装</h1><ul><li><input disabled="" type="checkbox"> <strong>Origin pro2022为高校学生和科研工作者提供免费的使用权限，只需要.edu后缀的邮箱即可申请序列号和产品密钥，每次有效期半年，到期前可再次申请免费使用。</strong></li></ul><p><strong>下载安装具体步骤</strong></p><ul><li>打开Originlab官网：<em><a href="https://www.originlab.com/">https://www.originlab.com/</a></em></li><li>首页点击 <em>Get started for free</em></li><li>Which best describes you? 随便选;   What is your sector 选 student</li><li>下一页面填写个人信息，一定要使用.edu后缀邮箱，submit</li><li>打开邮箱，点击收到的邮箱验证链接</li><li>再次收到一封邮件显示验证成功，按邮件中提供的步骤下载安装Origin，过程中需要输入邮件中的序列号和product key</li><li>安装完成</li></ul><h1 id="二、-无法导出图表的解决方案"><a href="#二、-无法导出图表的解决方案" class="headerlink" title="二、 无法导出图表的解决方案"></a>二、 无法导出图表的解决方案</h1><p>在使用过程中遇到了一个十分小众的问题：绘制完毕的图片无法导出，右键导出图表报错，错误代码14001<br><a href="https://imgtu.com/i/bYsg58"><img src="https://s4.ax1x.com/2022/03/03/bYsg58.jpg" alt="bYsg58.jpg"></a></p><p>经过一番尝试，在外网找到了详细的解决方案：</p><blockquote><p><a href="https://my.originlab.com/forum/topic.asp?TOPIC_ID=31316">https://my.originlab.com/forum/topic.asp?TOPIC_ID=31316</a><br><a href="https://www.originlab.com/index.aspx?go=products&amp;pid=1852#About">https://www.originlab.com/index.aspx?go=products&amp;pid=1852#About</a></p></blockquote><p>方案看起来比较复杂，翻译过来可以简单分为以下步骤：</p><ol><li><p>下载 MSI Installer，两个都需要下载。<br><a href="https://imgtu.com/i/bYc0v4"><img src="https://s4.ax1x.com/2022/03/03/bYc0v4.png" alt="bYc0v4.png"></a></p></li><li><p>下载DLL文件。（注意：以下文件需要全部下载安装。全部全部全部，一开始我只下载了2015-2019.exe，结果问题没有解决，又浪费了一天的时间寻找其他解决办法…）<br><a href="https://imgtu.com/i/bYyjFf"><img src="https://s4.ax1x.com/2022/03/03/bYyjFf.png" alt="bYyjFf.png"></a></p></li><li><p>双击运行Origin2022SR1.msi，得到一个名为origin2022的文件夹</p></li><li><p>解压MSIInstallOrigin2022SR1Sample.zip，将得到的文件夹拷贝到与Origin2022SR1.msi Installer同一个文件夹下，可以看到其中包含config.ini 和两个.bat 文件</p></li><li><p>编辑Config.ini 。将序列号和其他设置选项添加到Config.ini中，此处我只添加了序列号，其他未作改动</p></li><li><p>编辑Origin2022-QuietInstall.bat（记事本打开），取消注释需要的MS redistributables</p></li><li><p>双击运行Origin2022-QuietInstall.bat</p></li></ol><p>后记：回想一下，针对错误代码14001，其实可以仅下载安装DLL文件试一试，如果不行再按以上步骤操作。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Origin下载安装与问题&quot;&gt;&lt;a href=&quot;#Origin下载安装与问题&quot; class=&quot;headerlink&quot; title=&quot;Origin下载安装与问题&quot;&gt;&lt;/a&gt;Origin下载安装与问题&lt;/h1&gt;&lt;h1 id=&quot;一、Origin-Pro-2022下载安装</summary>
+      
+    
+    
+    
+    
+    <category term="软件" scheme="https://a-lamb.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Sentinel-2 L2A数据重采样与裁剪</title>
