@@ -1,0 +1,657 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MIMICS模型 | A-Lamb's notebook</title><meta name="keywords" content="微波散射模型；Fortran语言"><meta name="author" content="A little lamb"><meta name="copyright" content="A little lamb"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MIMICS模型 MIMICS模型，全称为密歇根微波冠层散射模型（Michigan microwave canopy scattering model），由ulaby等于1988年提出。   Ulaby F T ,  Mcdonald K ,  Sarabandi K , et al. Michigan Microwave Canopy Scattering Models (MIMICS)[C]&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIMICS模型">
+<meta property="og:url" content="https://a-lamb.github.io/2022/05/18/MIMICS%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="A-Lamb&#39;s notebook">
+<meta property="og:description" content="MIMICS模型 MIMICS模型，全称为密歇根微波冠层散射模型（Michigan microwave canopy scattering model），由ulaby等于1988年提出。   Ulaby F T ,  Mcdonald K ,  Sarabandi K , et al. Michigan Microwave Canopy Scattering Models (MIMICS)[C]&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://a-lamb.github.io/img/lamb2.jpg">
+<meta property="article:published_time" content="2022-05-18T09:17:21.000Z">
+<meta property="article:modified_time" content="2022-05-18T09:26:11.504Z">
+<meta property="article:author" content="A little lamb">
+<meta property="article:tag" content="微波散射模型；Fortran语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://a-lamb.github.io/img/lamb2.jpg"><link rel="shortcut icon" href="/img/small_lamb.jpg"><link rel="canonical" href="https://a-lamb.github.io/2022/05/18/MIMICS%E6%A8%A1%E5%9E%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MIMICS模型',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-18 17:26:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="A-Lamb's notebook" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/small_lamb.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/lamb2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">A-Lamb's notebook</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MIMICS模型</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-05-18T09:17:21.000Z" title="Created 2022-05-18 17:17:21">2022-05-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-05-18T09:26:11.504Z" title="Updated 2022-05-18 17:26:11">2022-05-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MIMICS模型"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="MIMICS模型"><a href="#MIMICS模型" class="headerlink" title="MIMICS模型"></a>MIMICS模型</h1><ul>
+<li>MIMICS模型，全称为密歇根微波冠层散射模型（Michigan microwave canopy scattering model），由ulaby等于1988年提出。</li>
+</ul>
+<blockquote>
+<p>Ulaby F T ,  Mcdonald K ,  Sarabandi K , et al. Michigan Microwave Canopy Scattering Models (MIMICS)[C]// International Geoscience &amp; Remote Sensing Symposium. IEEE, 1988.</p>
+</blockquote>
+<ul>
+<li><p>模型将森林植被在垂直方向上分为树冠层、树干层以及地表层。冠层包括树枝和叶， 在模型中分别建模为圆柱状介电体和扁平矩形，用联合概率密度分布函数表示其方位、直径、长度等等；树干层建模为介电圆柱体。</p>
+</li>
+<li><p>模型中的微波散射由5个部分构成：<br>①植被冠层直接后向散射；<br>②植被层-下垫面地表和下垫面地表-植被层相互耦合作用的后向散射；<br>③下垫面地表直接后向散射；<br>④经过植被双程衰减的下垫面地表的直接后向散射；<br>⑤经过植被冠层衰减的树干层-地表和地表-树干层的二面角反射</p>
+</li>
+</ul>
+<h1 id="MIMICS模型Fortran源码"><a href="#MIMICS模型Fortran源码" class="headerlink" title="MIMICS模型Fortran源码"></a>MIMICS模型Fortran源码</h1><h2 id="Mimics1-5a"><a href="#Mimics1-5a" class="headerlink" title="Mimics1.5a"></a>Mimics1.5a</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://codeocean.com/capsule/8976769/tree/v1">https://codeocean.com/capsule/8976769/tree/v1</a><br>FROM registry.codeocean.com/codeocean/fortran:4.8.4-ubuntu14.04</p>
+</blockquote>
+<ul>
+<li>Mimics1.5a is a code for simulating the microwave backscatter from a forest.</li>
+<li>MIMICS1.5a was written at the University of Michigan, College of Engineering, Electrical Engineering and Computer Science Department, The Radiation Laboratory by Kyle McDonald, with some extensions by Leland Pierce.</li>
+</ul>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><ul>
+<li>Fortran (4.8.4 )    </li>
+<li>Ubuntu 14.04</li>
+</ul>
+<h3 id="输入参数"><a href="#输入参数" class="headerlink" title="输入参数"></a>输入参数</h3><p><strong>首先按顺序编辑文件1-6：</strong></p>
+<ol>
+<li>configuration.input – general overall params for the simulation<br> //配置文件：对各参数的总体描述和配置</li>
+<li>sensor.input – operating frequencies and incidence angles<br>//传感器：包括频率和入射角</li>
+<li>environment.input – temperatures<br>//环境：包括土壤温度、静水温度和植被温度（三者通常取同一值）</li>
+<li>ground.input – ground params and model<br>//地表：包括静水表面参数（含盐量，单位ppt)、积雪表面参数（雪层厚度，单位m)、表面模型参数（表面散射模型的选择：几何光学模型 /物理光学模型  /小扰动模型 )</li>
+<li>dielectric_ground_table.input – optionally specify the ground dielectric constant<br>//表面相对介电常数输入表: C波段、L波段、P波段</li>
+<li>dielectric_snow_table.input – optionally specify the snow layer dielectric constant<br>//积雪表面相对介电常数</li>
+</ol>
+<p><strong>然后选择性编辑植被文件7-19：</strong><br>  // 以下数据均存在两种输入方式：一种包括最小值、最大值和步长三个参数；另一种从表格中读取具体数据</p>
+<ol start="7">
+<li>trunk_and_gross_canopy.input<br>// 树干几何形状和总冠层特征：树干重量含水率、树干干密度、冠层密度（每平方米树的数量）、冠层厚度（m)、树干直径（cm）、树干长度（m)、树干直径标准差（cm)、树干长度标准差（m)；<br>// 树干分布功能数据：树干方向、树干尺寸、功能描述</li>
+<li>dielectric_trunk_table.input<br>// 树干相对介电常数表: C波段、L波段、P波段</li>
+<li>histogram_trunk_diam.input<br>// 树干直径尺寸分布直方图：树干胸径（cm)</li>
+<li>trunk_hght_f.f<br>// 利用树干直径计算树高的函数 </li>
+<li>branch_primary.input<br>// 与一级枝条有关的冠层几何参数：枝条重量含水率、枝条干密度、枝条长度、枝条直径、枝条密度（每平方米分枝数）<br>// 一级枝条分布功能数据：枝条方向、功能描述</li>
+<li>dielectric_branch1_table.input<br>// 一级枝条相对介电常数表: C波段、L波段、P波段</li>
+<li>branch_secondary.input<br>// 与二级枝条有关的冠层几何参数：枝条重量含水率、枝条干密度、枝条长度、枝条直径、枝条密度（每平方米分枝数）<br>// 二级枝条分布功能数据：枝条方向、功能描述</li>
+<li>dielectric_branch2_table.input<br>// 二级枝条相对介电常数表: C波段、L波段、P波段</li>
+</ol>
+<p><strong>枝条包括4个以上等级，每个等级均包括冠层几何参数和相对介电常数两个文件</strong></p>
+<ol start="15">
+<li><p>leaf.input<br>// 与叶片有关的冠层几何参数：叶片重量含水率（（湿重-干重）/湿重）、叶片干密度、叶片厚度、叶片直径、叶片密度（每平方米叶片数）<br>// 叶片分布功能数据：均匀分布、planophile展型、erectophile直立叶株型（如玉米）、plagiophile、extremophile、uniform、spherical</p>
+</li>
+<li><p>dielectric_leaf_table.input<br>//叶片相对介电常数表</p>
+</li>
+<li><p>needle.input<br>// 与针叶有关的冠层几何参数：针叶重量含水率（（湿重-干重）/湿重）、针叶干密度、针叶长度、针叶直径、针叶密度（每平方米叶片数）<br>// 针叶分布功能数据描述：均匀分布</p>
+</li>
+<li><p>dielectric_needle_table.input<br>// 针叶相对介电常数表</p>
+</li>
+<li><p>parameter_nesting.input<br>// 冠层参数嵌套顺序：列出了分配给每个参数的数字，较小的数字先循环<br>// 共61个参数（包括积雪表面），详见表1。</p>
+</li>
+</ol>
+<p>表1 MIMICS模型参数及嵌套顺序</p>
+<table>
+<thead>
+<tr>
+<th>Nesting Order</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Description_1</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>THETA_DEGREES</td>
+<td>radar look angle</td>
+<td>入射角</td>
+<td>{SENSOR PARAMETERS</td>
+</tr>
+<tr>
+<td>2</td>
+<td>FREQ_GHZ</td>
+<td>radar frequency</td>
+<td>频率</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>MV_SOIL</td>
+<td>soil volumetric moisture</td>
+<td>土壤体积含水量</td>
+<td>{GROUND PARAMETERS, also corresponds to soil dielectric</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RMS_SOIL</td>
+<td>surface RMS height</td>
+<td>表面均方根高度</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>LS_SOIL</td>
+<td>surface correlation length</td>
+<td>表面相关长度</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>SAND</td>
+<td>soil % sand</td>
+<td>砂粒百分比</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>CLAY</td>
+<td>soil % clay</td>
+<td>粘粒百分比</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>SALT</td>
+<td>standing water salt content (ppt)</td>
+<td>静水含盐量</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>MG_TRUNK</td>
+<td>gravimetric trunk moisture</td>
+<td>树干重量含水率</td>
+<td>{TRUNK PARAMETERS, also corresponds to trunk dielectric</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DENSITY</td>
+<td>canopy tree density</td>
+<td>树冠层密度</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>RHO_TRUNK</td>
+<td>dry density of trunk material</td>
+<td>树干干密度</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>CROWN_HGHT</td>
+<td>crown layer height</td>
+<td>冠层高度</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>TRUNK_DIAM</td>
+<td>trunk diameter</td>
+<td>树干直径</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>TRUNK_HGHT</td>
+<td>trunk layer height</td>
+<td>树干高度</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>MG_LEAF</td>
+<td>gravimetric leaf moisture</td>
+<td>叶片重量含水率</td>
+<td>{LEAF PARAMETERS, also corresponds to leaf dielectric</td>
+</tr>
+<tr>
+<td>16</td>
+<td>RHO_LEAF</td>
+<td>dry density of leaf material</td>
+<td>叶片干密度</td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>LEAF_DENS</td>
+<td>leaf number density</td>
+<td>叶片密度</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>LEAF_DIAM</td>
+<td>leaf diameter</td>
+<td>叶片直径</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>LEAF_TAU</td>
+<td>leaf thickness</td>
+<td>叶片厚度</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>MG_NDL</td>
+<td>gravimetric needle moisture</td>
+<td>针叶重量含水率</td>
+<td>{NEEDLE PARAMETERS, also corresponds to needle dielectric</td>
+</tr>
+<tr>
+<td>21</td>
+<td>RHO_NDL</td>
+<td>dry density of needle material</td>
+<td>针叶干密度</td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>NDL_DENS</td>
+<td>needle number density</td>
+<td>针叶密度</td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>NDL_DIAM</td>
+<td>needle diameter</td>
+<td>针叶直径</td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>NDL_LNG</td>
+<td>needle length</td>
+<td>针叶长度</td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>MG_BR1</td>
+<td>gravimetric branch moisture</td>
+<td>枝条重量含水率</td>
+<td>{PRIMARY BRANCH PARAMETERS, also corresponds to prim. branch dielectric</td>
+</tr>
+<tr>
+<td>26</td>
+<td>RHO_BR1</td>
+<td>dry density of branch material</td>
+<td>枝条干密度</td>
+<td>{PRIMARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>27</td>
+<td>BR1_DENS</td>
+<td>branch number density</td>
+<td>枝条密度</td>
+<td>{PRIMARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>28</td>
+<td>BR1_DIAM</td>
+<td>branch diameter</td>
+<td>枝条直径</td>
+<td>{PRIMARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>29</td>
+<td>BR1_LNG</td>
+<td>branch length</td>
+<td>枝条长度</td>
+<td>{PRIMARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>30</td>
+<td>T_SOIL</td>
+<td>temperature of soil</td>
+<td>土壤温度</td>
+<td>{ENVIRONMENT PARAMETERS</td>
+</tr>
+<tr>
+<td>31</td>
+<td>T_VEG</td>
+<td>temperature of vegetation</td>
+<td>植被温度</td>
+<td></td>
+</tr>
+<tr>
+<td>32</td>
+<td>T_WATER</td>
+<td>temperature of standing water</td>
+<td>静水温度</td>
+<td></td>
+</tr>
+<tr>
+<td>33</td>
+<td>MG_BR2</td>
+<td>gravimetric branch moisture</td>
+<td>二级枝条重量含水率</td>
+<td>{SECONDARY BRANCH PARAMETERS, also corresponds to sec. branch dielectric</td>
+</tr>
+<tr>
+<td>34</td>
+<td>RHO_BR2</td>
+<td>dry density of branch material</td>
+<td>二级枝条干密度</td>
+<td>{SECONDARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>35</td>
+<td>BR2_DENS</td>
+<td>branch number density</td>
+<td>二级枝条密度</td>
+<td>{SECONDARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>36</td>
+<td>BR2_DIAM</td>
+<td>branch diameter</td>
+<td>二级枝条直径</td>
+<td>{SECONDARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>37</td>
+<td>BR2_LNG</td>
+<td>branch length</td>
+<td>二级枝条长度</td>
+<td>{SECONDARY BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>38</td>
+<td>MG_BR3</td>
+<td>gravimetric branch moisture</td>
+<td>三级枝条重量含水率</td>
+<td>{3rd BRANCH PARAMETERS, also corresponds to sec. branch dielectric</td>
+</tr>
+<tr>
+<td>39</td>
+<td>RHO_BR3</td>
+<td>dry density of branch material</td>
+<td>三级枝条干密度</td>
+<td>{3rd BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>40</td>
+<td>BR3_DENS</td>
+<td>branch number density</td>
+<td>三级枝条密度</td>
+<td>{3rd BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>41</td>
+<td>BR3_DIAM</td>
+<td>branch diameter</td>
+<td>三级枝条直径</td>
+<td>{3rd BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>42</td>
+<td>BR3_LNG</td>
+<td>branch length</td>
+<td>三级枝条长度</td>
+<td>{3rd BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>43</td>
+<td>MG_BR3</td>
+<td>gravimetric branch moisture</td>
+<td>与38重复，应该是错了</td>
+<td>{3rd BRANCH PARAMETERS, also corresponds to sec. branch dielectric</td>
+</tr>
+<tr>
+<td>44</td>
+<td>RHO_BR4</td>
+<td>dry density of branch material</td>
+<td>四级枝条干密度</td>
+<td>{4th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>45</td>
+<td>BR4_DENS</td>
+<td>branch number density</td>
+<td>四级枝条密度</td>
+<td>{4th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>46</td>
+<td>BR4_DIAM</td>
+<td>branch diameter</td>
+<td>四级枝条直径</td>
+<td>{4th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>47</td>
+<td>BR4_LNG</td>
+<td>branch length</td>
+<td>四级枝条长度</td>
+<td>{4th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>48</td>
+<td>MG_BR4</td>
+<td>gravimetric branch moisture</td>
+<td>四级枝条重量含水率</td>
+<td>{4th BRANCH PARAMETERS, also corresponds to sec. branch dielectric</td>
+</tr>
+<tr>
+<td>49</td>
+<td>RHO_BR5</td>
+<td>dry density of branch material</td>
+<td>五级枝条干密度</td>
+<td>{5th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>50</td>
+<td>BR5_DENS</td>
+<td>branch number density</td>
+<td>五级枝条密度</td>
+<td>{5th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>51</td>
+<td>BR5_DIAM</td>
+<td>branch diameter</td>
+<td>五级枝条直径</td>
+<td>{5th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>52</td>
+<td>BR5_LNG</td>
+<td>branch length</td>
+<td>五级枝条长度</td>
+<td>{5th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>53</td>
+<td>MG_BR5</td>
+<td>gravimetric branch moisture</td>
+<td>五级枝条重量含水率</td>
+<td>{5th BRANCH PARAMETERS, also corresponds to sec. branch dielectric</td>
+</tr>
+<tr>
+<td>54</td>
+<td>RHO_BR6</td>
+<td>dry density of branch material</td>
+<td>六级枝条干密度</td>
+<td>{6th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>55</td>
+<td>BR6_DENS</td>
+<td>branch number density</td>
+<td>六级枝条密度</td>
+<td>{6th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>56</td>
+<td>BR6_DIAM</td>
+<td>branch diameter</td>
+<td>六级枝条直径</td>
+<td>{6th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>57</td>
+<td>BR6_LNG</td>
+<td>branch length</td>
+<td>六级枝条长度</td>
+<td>{6th BRANCH PARAMETERS</td>
+</tr>
+<tr>
+<td>58</td>
+<td>TRUNK_Dsig</td>
+<td>trunk diameter sigma (standard dev.)</td>
+<td>树干直径标准差</td>
+<td>{trunk statistics</td>
+</tr>
+<tr>
+<td>59</td>
+<td>TRUNK_Hsig</td>
+<td>trunk height sigma (standard dev.)</td>
+<td>树干高度标准差</td>
+<td>{trunk statistics</td>
+</tr>
+<tr>
+<td>60</td>
+<td>T_SNOW</td>
+<td>snow layer thickness</td>
+<td>雪层厚度</td>
+<td>{snow layer parameters</td>
+</tr>
+<tr>
+<td>61</td>
+<td>eps_SNOW</td>
+<td>snow layer relative dielectric</td>
+<td>雪层相对介电常数</td>
+<td></td>
+</tr>
+</tbody></table>
+<ol start="20">
+<li>parameter_nesting.input<br>// 不使用最小值-最大值-步长格式的输入参数<br>// 可利用src文件夹中“make_table.f”文件创建<br>//必须最后运行</li>
+</ol>
+<h3 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h3><ol>
+<li>forest_kappa_mats.out: Kappa matrices of individual layers<br>// 每一层的Kappa矩阵</li>
+<li>forest_phase_crown.out: Phase differences for each crown-layer mechanism<br>// 树冠各组分的相位差</li>
+<li>forest_phase_mats.out: Phase matrices for each full-canopy mechanism<br>//  每一层的相位矩阵</li>
+<li>forest_phase_terms.out: Phase differences for each full-canopy mechanism<br>// 整个冠层的相位差</li>
+<li>forest_phase_trunk.out: Phase differences for each trunk-layer mechanism<br>// 树干层和地面层相位差</li>
+<li>forest_sigma_cross.out: Cross-polarized Sigma-0’s for each full-canopy mechanism<br>//整个冠层交叉极化后向散射系数</li>
+<li>forest_sigma_like.out: Co-polarized Sigma-0’s for each full-canopy mechanism<br>// 整个冠层同极化后向散射系数</li>
+<li>forest_trans_mats.out: Transmissivity matrices for individual layers<br>//  每一层透射率矩阵</li>
+<li>forest_trans.out: Transmissivity values for each individual layer<br>// 每一层透射率</li>
+<li>mimics2.data: Experimental<br>//地表反射矩阵；树冠和树干M-矩阵</li>
+<li>polarimetric.out: Transformation matrices for each full-canopy mechanism<br>//整个冠层反射率矩阵</li>
+</ol>
+<p><strong>注意：如果只需要得到不同极化方式下的后向散射系数，只需打开6、7文件。</strong></p>
+<p><strong>在输出文件中，所有不变的数据被显示在顶部，变化的参数以表格形式输出。</strong></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E6%B3%A2%E6%95%A3%E5%B0%84%E6%A8%A1%E5%9E%8B%EF%BC%9BFortran%E8%AF%AD%E8%A8%80/">微波散射模型；Fortran语言</a></div><div class="post_share"><div class="social-share" data-image="/img/lamb2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/05/13/GEE%E5%B9%B3%E5%8F%B0SAR%E5%BD%B1%E5%83%8F%E6%94%B6%E9%9B%86%E3%80%81%E5%A4%84%E7%90%86%E3%80%81%E5%90%8E%E5%90%91%E6%95%A3%E5%B0%84%E7%B3%BB%E6%95%B0%E6%8F%90%E5%8F%96%E4%B8%8E%E5%AF%BC%E5%87%BA/"><img class="next-cover" src="/img/lamb2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Google Earth Engine批量处理、下载SAR影像并计算时间序列后向散射系数——以Sentinel-1为例</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/small_lamb.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">A little lamb</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MIMICS%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">MIMICS模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MIMICS%E6%A8%A1%E5%9E%8BFortran%E6%BA%90%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">MIMICS模型Fortran源码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mimics1-5a"><span class="toc-number">2.1.</span> <span class="toc-text">Mimics1.5a</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.2.</span> <span class="toc-text">运行环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.3.</span> <span class="toc-text">输入参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.4.</span> <span class="toc-text">输出文件</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
